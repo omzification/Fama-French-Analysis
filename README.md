@@ -224,11 +224,9 @@ A t-statistic for the pricing error $`{\alpha_t}`$ was computed to see if the st
 
 ### Backtest
 
-Using the excess returns on the 25 portfolios, the sample covariance matrix was computed on the sample period Jan 2010 to Dec 2017, denoted by $`{COV}`$. The shrunk covariance matrix was computed by 
-
-$${COV S = (1-a)*average(diag(COV))*Identity(25)+a*COV}$$
-
-with $`{a=0.5}`$. By “$`{average(diag(COV))*Identity(25)}`$” I mean you average the diagonal entries in $`{COV}`$ and then multiply the 25 × 25 identity matrix by this value.
+Using the excess returns on the 25 portfolios, the sample covariance matrix was computed on the sample period Jan 2010 to Dec 2017, denoted by $`{COV}`$. The shrunk covariance matrix was computed by $`{COVS=(1-a)*average(diag(COV))*Identity(25)+a*COV}`$ 
+with $`{a=0.5}`$. 
+By “$`{average(diag(COV))*Identity(25)}`$” I mean you average the diagonal entries in $`{COV}`$ and then multiply the 25 × 25 identity matrix by this value.
 
 I then calculate the portfolio weights that solve the minimum variance portfolio problem, with weights summing to one, using the two different estimators of the covariance matrix and denote them by $`{w}`$ and $`{ws}`$. I also consider the equally weighted portfolio, and denote its weights by $`{wEW}`$. I carry out a backtest of the three portfolios. To do so, I must use data unseen by the estimators $`{w}`$ and $`{ws}`$. Hence, I used the testing period Jan 2018 to Dec 2022 to compute the portfolio excess returns for the strategy that uses w, ws and wEW as portfolio weights. (Conducting a backtest on data used for estimation is said to be subject to forward looking bias and must be avoided when possible.) Also, I used the excess returns on the market $`{(R_{m,t}-r_f)}`$ as a benchmark. I compute the mean, variance, skewness and kurtosis for the three portfolios and the benchmark.
 
